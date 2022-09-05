@@ -9,4 +9,7 @@ public class ItemComment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "item_comment_id")
     private Long id;
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
 }
