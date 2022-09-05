@@ -3,7 +3,6 @@ package com.web.shopping.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tItem")
 public class Item {
 
     @Id
