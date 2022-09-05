@@ -12,4 +12,6 @@ public class Delivery {
     private Address address;
     @Enumerated
     private DeliveryStatus status;
+    @OneToOne(mappedBy = "delivery")
+    private Order order;
 }

@@ -9,4 +9,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "item_id")
     private Long id;
+    private Integer price;
+    private Integer stock;
+
 }
