@@ -10,14 +10,12 @@ import javax.persistence.Embeddable;
 public class Address {
 
     private String city;
-    private String street;
     private String home;
 
     protected Address() {}
 
-    public Address(String city, String street, String home) {
+    public Address(String city, String home) {
         this.city = city;
-        this.street = street;
         this.home = home;
     }
 }

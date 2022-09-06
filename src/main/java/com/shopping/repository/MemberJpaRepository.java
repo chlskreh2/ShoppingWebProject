@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
@@ -34,7 +33,7 @@ public class MemberJpaRepository implements MemberRepository{
     @Override
     public List<String> findByUserId(String userId) {
         return em.createQuery("select m.userId from Member m where m.userId = :userId", String.class)
-                .setParameter("userId", "name")
+                .setParameter("userId", userId)
                 .getResultList();
     }
 }
