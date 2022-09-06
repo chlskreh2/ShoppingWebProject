@@ -1,5 +1,6 @@
-package com.web.shopping.domain;
+package com.shopping.domain;
 
+import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 @Setter
 public class Category {
 
@@ -14,7 +16,7 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
     private String name;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
     @OneToMany(mappedBy = "parent")

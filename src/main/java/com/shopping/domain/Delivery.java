@@ -1,8 +1,13 @@
-package com.web.shopping.domain;
+package com.shopping.domain;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Delivery {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -12,6 +17,6 @@ public class Delivery {
     private Address address;
     @Enumerated
     private DeliveryStatus status;
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
 }
