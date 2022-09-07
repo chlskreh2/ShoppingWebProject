@@ -5,11 +5,11 @@ import com.shopping.dto.member.SaveMemberDto;
 import com.shopping.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
@@ -18,6 +18,12 @@ import javax.validation.Valid;
 public class MemberController {
 
     private final MemberService memberService;
+
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("data", "Spring");
+        return "home";
+    }
 
     @GetMapping("/members/join")
     public String memberJoinForm(@ModelAttribute SaveMemberDto form) {
