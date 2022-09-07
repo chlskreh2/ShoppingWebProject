@@ -3,8 +3,12 @@ package com.shopping.dto.member;
 import com.shopping.domain.Address;
 import com.shopping.domain.Member;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
+@Getter
+@Setter
 public class SaveMemberDto {
 
     private String userId;

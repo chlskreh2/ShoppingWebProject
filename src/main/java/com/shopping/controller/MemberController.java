@@ -26,14 +26,14 @@ public class MemberController {
     }
 
     @GetMapping("/members/join")
-    public String memberJoinForm(@ModelAttribute SaveMemberDto form) {
-        return "loginForm";
+    public String memberJoinForm(@ModelAttribute(name = "form") SaveMemberDto form) {
+        return "form/login/loginForm";
     }
 
     @PostMapping("/members/join")
-    public String memberJoin(@Valid @ModelAttribute SaveMemberDto form, BindingResult bindingResult) {
+    public String memberJoin(@Valid @ModelAttribute(name = "form") SaveMemberDto form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "loginForm";
+            return "form/login/loginForm";
         }
 
         Member member = form.saveMember();

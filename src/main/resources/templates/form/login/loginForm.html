@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>왘쇼핑몰</title>
+</head>
+<body>
+
+<div class="container">
+    <form action="/members/join" th:action th:object="${form}" method="post">
+        <div>
+            <label for="userId">아이디</label>
+            <input type="text" id="userId" th:field="*{userId}" class="form-input" placeholder="아이디를 입력해주세요" />
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" th:field="*{password}" class="form-input" placeholder="비밀번호를 입력해주세요" />
+        </div>
+        <div>
+            <label for="phone">전화번호</label>
+            <input type="text" id="phone" th:field="*{phone}" class="form-input" placeholder="ex) 01012341234" />
+        </div>
+        <div>
+            <label for="birth">생년월일</label>
+            <input type="text" id="birth" class="form-input" placeholder="ex) 19990303" />
+        </div>
+        <div>
+            <label>성별</label>
+            <label for="gender1">남</label>
+            <input type="radio" id="gender1" th:field="*{gender}" class="form-radio" value="남"/>
+            <label for="gender2">여</label>
+            <input type="radio" id="gender2" th:field="*{gender}" class="form-radio" value="여"/>
+
+        </div>
+        <div>
+            <label for="address1">주소</label>
+            <input type="text" id="address1" th:field="*{address.city}" class="form-address" />
+            <label for="address2">상세주소</label>
+            <input type="text" id="address2" th:field="*{address.home}" class="form-address" />
+        </div>
+        <div>
+            <input type="submit" value="회원가입">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
