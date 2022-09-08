@@ -17,7 +17,7 @@ public class Member {
     private Long id;
     private String userId;
     private String password;
-    private Integer phone;
+    private String phone;
     private Integer birth;
     private String gender;
     @Embedded

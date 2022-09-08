@@ -24,15 +24,16 @@
             </div>
             <div>
                 <label for="birth">생년월일</label>
-                <input type="text" id="birth" class="form-input" placeholder="ex) 19990303" />
+                <input type="text" id="birth" th:field="*{birth}" class="form-input" placeholder="ex) 19990303" />
             </div>
             <div>
                 <label>성별</label>
-                <label for="gender1">남</label>
-                <input type="radio" id="gender1" th:field="*{gender}" class="form-radio" value="남"/>
-                <label for="gender2">여</label>
-                <input type="radio" id="gender2" th:field="*{gender}" class="form-radio" value="여"/>
-
+                <div class="text-gender">
+                    <label for="gender1" class="label-gender">남</label>
+                    <input type="radio" id="gender1" th:field="*{gender}" class="form-radio" value="남"/>
+                    <label for="gender2" class="label-gender" id="label-gender-female">여</label>
+                    <input type="radio" id="gender2" th:field="*{gender}" class="form-radio" value="여"/>
+                </div>
             </div>
             <div>
                 <label for="address1">주소</label>

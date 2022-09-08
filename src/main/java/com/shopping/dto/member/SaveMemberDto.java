@@ -5,17 +5,28 @@ import com.shopping.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @Getter
 @Setter
 public class SaveMemberDto {
 
+    @NotBlank
     private String userId;
+    @NotBlank
     private String password;
-    private Integer phone;
+    @NotBlank
+    private String phone;
+    @NotNull
     private Integer birth;
+    @NotBlank
     private String gender;
+    @NotNull
     private Address address;
 
     public Member saveMember() {
