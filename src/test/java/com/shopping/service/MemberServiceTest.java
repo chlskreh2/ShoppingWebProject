@@ -8,7 +8,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 
@@ -27,8 +26,8 @@ class MemberServiceTest {
 
     @Test
     void save() {
-        SaveMemberDto saveMemberDto = new SaveMemberDto("java", "1234", 01011111111,20001212,
-                "남", new Address("서울특별시 중랑구", "자바로 1길 23", "아파트 1층 101호"));
+        SaveMemberDto saveMemberDto = new SaveMemberDto("java", "1234", "01011111111",20001212,
+                "남", new Address("서울특별시 중랑구", "아파트 1층 101호"));
         Member member = saveMemberDto.saveMember();
         Long saveId = memberService.join(member);
         Member findMember = memberService.findUser(saveId);
@@ -38,13 +37,13 @@ class MemberServiceTest {
 
     @Test
     void duplicateUserId() {
-        SaveMemberDto saveMemberDto = new SaveMemberDto("java", "1234", 01011111111,20001212,
-                "남", new Address("서울특별시 중랑구", "자바로 1길 23", "아파트 1층 101호"));
+        SaveMemberDto saveMemberDto = new SaveMemberDto("java", "1234", "01011111111",20001212,
+                "남", new Address("서울특별시 중랑구", "아파트 1층 101호"));
         Member member = saveMemberDto.saveMember();
         Long saveId = memberService.join(member);
 
-        SaveMemberDto saveMemberDto2 = new SaveMemberDto("java", "1234", 01011111111,20001212,
-                "남", new Address("서울특별시 중랑구", "자바로 1길 23", "아파트 1층 101호"));
+        SaveMemberDto saveMemberDto2 = new SaveMemberDto("java", "1234", "01011111111",20001212,
+                "남", new Address("서울특별시 중랑구", "아파트 1층 101호"));
         Member member2 = saveMemberDto2.saveMember();
 
         Assertions.assertThatThrownBy(() -> memberService.join(member2)).isInstanceOf(SameUserIdException.class);
