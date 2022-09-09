@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +19,10 @@ public abstract class Item {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "item_id")
     private Long id;
+    private String itemName;
     private Integer price;
     private Integer stock;
+    private Integer deliveryPrice;
     @Lob
     private String information;
 
