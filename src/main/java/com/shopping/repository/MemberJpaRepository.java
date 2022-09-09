@@ -32,7 +32,7 @@ public class MemberJpaRepository implements MemberRepository{
 
     @Override
     public List<String> findByUserId(String userId) {
-        return em.createQuery("select m.userId from Member m where m.userId = :userId", String.class)
+        return em.createQuery("select m.userId from Member as m where m.userId = :userId", String.class)
                 .setParameter("userId", userId)
                 .getResultList();
     }

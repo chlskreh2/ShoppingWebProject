@@ -10,7 +10,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Item {
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
+public abstract class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -18,6 +20,9 @@ public class Item {
     private Long id;
     private Integer price;
     private Integer stock;
+    @Lob
+    private String information;
+
     @OneToMany(mappedBy = "item")
     private List<ItemComment> itemComments = new ArrayList<>();
 }
