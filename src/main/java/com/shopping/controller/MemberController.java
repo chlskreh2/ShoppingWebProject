@@ -21,7 +21,6 @@ public class MemberController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("data", "Spring");
         return "home";
     }
 

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class Clothes extends Item{
+public class Cloth extends Item{
 
     private String brand;
     private String size;

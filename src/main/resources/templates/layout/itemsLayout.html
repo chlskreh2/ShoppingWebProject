@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html th:fragment="itemsLayout (content)" lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>왘쇼핑몰</title>
+  <link rel="stylesheet" href="/css/items.css">
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="header-title">
+      <h1>왘<sub>쇼핑몰</sub></h1>
+    </div>
+    <div class="my-data">
+      <img class="my-image" src="/images/bag-icon.png" />
+      <img class="my-image" src="/images/my-icon.png" />
+    </div>
+  </header>
+
+  <nav>
+    <ul class="category-group">
+      <li>
+        <a href="#">의류</a>
+      </li>
+      <li>
+        <a href="#">식품</a>
+      </li>
+      <li>
+        <a href="#">도서</a>
+      </li>
+      <li>
+        <a href="#">가구</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section th:replace="${content}"></section>
+
+  <footer>
+    <div>(주)왁쇼핑몰</div>
+    <div>이메일 : wakShopping@123k456.com</div>
+    <div>주소 : 서울특별시 은하구 안드로메다</div>
+  </footer>
+</div>
+
+</body>
+</html>

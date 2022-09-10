@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/itemsLayout :: itemsLayout(~{::section})}" lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+  <section>
+    <div class="item-view-format">
+          <span class="divide-item">
+              의류 > 상의
+          </span>
+      <span class="sort-item">
+              <select onchange="location.href=this.value">
+                  <option value="#?sort=view"  >조회순</option>
+                  <option value="#?sort=sell">판매순</option>
+                  <option value="#?sort=star">별점순</option>
+                  <option value="#?sort=new">최신순</option>
+              </select>
+          </span>
+    </div>
+
+    <div class="item-group popular-item-group">
+      <div class="group-items popular-items">
+        <ul>
+          <li>
+            <div class="group-item popular-item">
+              <a href="#">
+                <img class="item-image popular-item-image" src="images/img1.jpg" />
+              </a>
+              <div>
+                아이템 설명
+              </div>
+              <div>
+                <a href="#"><button class="btn-buy">구매하기</button></a>
+                <a href="#"><button class="btn-mybag">장바구니</button></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="group-item popular-item">
+              <a href="#">
+                <img class="item-image popular-item-image" src="images/img1.jpg" />
+              </a>
+              <div>
+                아이템 설명
+              </div>
+              <div>
+                <a href="#"><button class="btn-buy">구매하기</button></a>
+                <a href="#"><button class="btn-mybag">장바구니</button></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="group-item popular-item">
+              <a href="#">
+                <img class="item-image popular-item-image" src="images/img1.jpg" />
+              </a>
+              <div>
+                아이템 설명
+              </div>
+              <div>
+                <a href="#"><button class="btn-buy">구매하기</button></a>
+                <a href="#"><button class="btn-mybag">장바구니</button></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="group-item popular-item">
+              <a href="#">
+                <img class="item-image popular-item-image" src="images/img1.jpg" />
+              </a>
+              <div>
+                아이템 설명
+              </div>
+              <div>
+                <a href="#"><button class="btn-buy">구매하기</button></a>
+                <a href="#"><button class="btn-mybag">장바구니</button></a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item-page">
+      <span>◁</span>
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>▷</span>
+    </div>
+  </section>
+</body>
+</html>
