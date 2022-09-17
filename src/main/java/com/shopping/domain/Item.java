@@ -24,7 +24,9 @@ public abstract class Item {
     private Integer deliveryPrice;
     @Lob
     private String information;
-
+    private Long viewCount;
+    @Embedded
+    private FileImage fileImage;
     @OneToMany(mappedBy = "item")
     private List<ItemComment> itemComments = new ArrayList<>();
 }

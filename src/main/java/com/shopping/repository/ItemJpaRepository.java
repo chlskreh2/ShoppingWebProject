@@ -1,6 +1,7 @@
 package com.shopping.repository;
 
 import com.shopping.domain.Item;
+import com.shopping.dto.item.SortViewClothDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -29,5 +30,12 @@ public class ItemJpaRepository implements ItemRepository{
         return em.createQuery("select i from Item as i", Item.class)
                 .getResultList();
     }
+
+    @Override
+    public List<SortViewClothDto> findClothSortView() {
+        return em.createQuery("select com.shopping.dto.item.SortViewClothDto from Item as i", SortViewClothDto.class)
+                .getResultList();
+    }
+
 
 }
