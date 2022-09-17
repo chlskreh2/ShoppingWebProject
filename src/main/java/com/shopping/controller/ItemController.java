@@ -34,7 +34,7 @@ public class ItemController {
     }
 
     @ResponseBody
-    @GetMapping("/{filename}")
+    @GetMapping("/items/{filename}")
     public Resource showImage(@PathVariable String filename) throws MalformedURLException {
         return new UrlResource("file:" + filePath+filename);
     }
