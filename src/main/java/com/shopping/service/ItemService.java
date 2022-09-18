@@ -1,7 +1,6 @@
 package com.shopping.service;
 
-import com.shopping.domain.Item;
-import com.shopping.dto.item.SortViewClothDto;
+import com.shopping.dto.item.SortViewBookDto;
 import com.shopping.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,8 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public List<SortViewClothDto> findClothSortView() {
-        return itemRepository.findClothSortView();
+    public List<SortViewBookDto> findBookSortView() {
+        return itemRepository.findBookSortView();
     }
 
 }

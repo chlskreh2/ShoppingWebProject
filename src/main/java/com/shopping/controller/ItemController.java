@@ -1,9 +1,7 @@
 package com.shopping.controller;
 
-import com.shopping.domain.Item;
-import com.shopping.dto.item.SortViewClothDto;
+import com.shopping.dto.item.SortViewBookDto;
 import com.shopping.service.ItemService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -28,9 +26,9 @@ public class ItemController {
 
     @GetMapping("/items/cloth")
     public String home(Model model) {
-        List<SortViewClothDto> clothSortView = itemService.findClothSortView();
+        List<SortViewBookDto> clothSortView = itemService.findBookSortView();
         model.addAttribute("clothes", clothSortView);
-        return "item/itemsCloth";
+        return "itemsBook";
     }
 
     @ResponseBody

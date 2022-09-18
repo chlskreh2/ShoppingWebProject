@@ -2,7 +2,7 @@ package com.shopping.dto.item;
 
 import com.shopping.domain.FileImage;
 
-public class SortViewClothDto {
+public class SortViewBookDto {
 
     private Long id;
     private String itemName;
