@@ -33,8 +33,11 @@ public class ItemJpaRepository implements ItemRepository{
 
     @Override
     public List<SortViewBookDto> findBookSortView() {
-        return em.createQuery("select com.shopping.dto.item.SortViewBookDto from Item as i", SortViewBookDto.class)
+        return em.createQuery("select new com.shopping.dto.item.SortViewBookDto" +
+                        "(i.itemName, i.price, i.viewCount, i.fileImage) " +
+                        "from Item as i", SortViewBookDto.class)
                 .getResultList();
+        //
     }
 
 
