@@ -2,9 +2,13 @@ package com.shopping.dto.item;
 
 import com.shopping.domain.Book;
 import com.shopping.domain.FileImage;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
 public class SaveBookDto {
 
     private String itemName;

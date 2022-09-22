@@ -23,56 +23,19 @@
     <div class="item-group popular-item-group">
       <div class="group-items popular-items">
         <ul>
-          <li>
+          <li th:each="book : ${books}">
             <div class="group-item popular-item">
               <a href="#">
                 <img class="item-image popular-item-image" src="images/img1.jpg" />
+                <div>
+                  <span th:text="${book.itemName}">
+                    상품 이름
+                  </span>
+                  <span th:text="${book.price}">
+                    가격
+                  </span>
+                </div>
               </a>
-              <div>
-                아이템 설명
-              </div>
-              <div>
-                <a href="#"><button class="btn-buy">구매하기</button></a>
-                <a href="#"><button class="btn-mybag">장바구니</button></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="group-item popular-item">
-              <a href="#">
-                <img class="item-image popular-item-image" src="images/img1.jpg" />
-              </a>
-              <div>
-                아이템 설명
-              </div>
-              <div>
-                <a href="#"><button class="btn-buy">구매하기</button></a>
-                <a href="#"><button class="btn-mybag">장바구니</button></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="group-item popular-item">
-              <a href="#">
-                <img class="item-image popular-item-image" src="images/img1.jpg" />
-              </a>
-              <div>
-                아이템 설명
-              </div>
-              <div>
-                <a href="#"><button class="btn-buy">구매하기</button></a>
-                <a href="#"><button class="btn-mybag">장바구니</button></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="group-item popular-item">
-              <a href="#">
-                <img class="item-image popular-item-image" src="images/img1.jpg" />
-              </a>
-              <div>
-                아이템 설명
-              </div>
               <div>
                 <a href="#"><button class="btn-buy">구매하기</button></a>
                 <a href="#"><button class="btn-mybag">장바구니</button></a>

@@ -1,7 +1,11 @@
 package com.shopping.dto.item;
 
 import com.shopping.domain.FileImage;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class SortViewBookDto {
 
     private String itemName;
