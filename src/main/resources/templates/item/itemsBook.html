@@ -20,10 +20,10 @@
           </span>
     </div>
 
-    <div class="item-group popular-item-group">
-      <div class="group-items popular-items">
-        <ul>
-          <li th:each="book : ${books}">
+    <div class="group-items popular-items">
+      <ul>
+        <th:block th:each="book, bookState : ${books}">
+          <li>
             <div class="group-item popular-item">
               <a href="#">
                 <img class="item-image popular-item-image" src="images/img1.jpg" />
@@ -42,8 +42,9 @@
               </div>
             </div>
           </li>
-        </ul>
-      </div>
+          <div th:if="${bookState.count % 4 == 0}"></div>
+        </th:block>
+      </ul>
     </div>
 
     <div class="item-page">

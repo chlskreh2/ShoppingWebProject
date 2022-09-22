@@ -49,10 +49,12 @@ public class WebInit {
         itemService.save(book4);
 
         Book book5 = new Book();
-        book5.setItemName("book4");
-        book5.setPrice(40000);
+        book5.setItemName("book5");
+        book5.setPrice(50000);
         book5.setViewCount(0L);
         itemService.save(book5);
+
+
     }
 
 }
