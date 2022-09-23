@@ -34,7 +34,6 @@ public class MemberController {
             return "home";
         }
 
-        model.addAttribute("member", loginMember);
         return "loginHome";
     }
 

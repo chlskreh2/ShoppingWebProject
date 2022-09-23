@@ -100,7 +100,12 @@ nav {
     color: rgb(68, 68, 68);
 }
 .item-page span {
-    margin: 0 10px 0 10px;
+    margin: 0 5px 0 5px;
+    padding: 0 10px 5px 10px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: antiquewhite;
 }
 
 .group-items {
