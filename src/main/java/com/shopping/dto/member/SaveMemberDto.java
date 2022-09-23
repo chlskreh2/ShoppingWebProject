@@ -2,14 +2,12 @@ package com.shopping.dto.member;
 
 import com.shopping.domain.Address;
 import com.shopping.domain.Member;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@AllArgsConstructor
 @Getter
 @Setter
 public class SaveMemberDto {

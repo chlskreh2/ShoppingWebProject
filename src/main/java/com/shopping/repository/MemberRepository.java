@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface MemberRepository {
 
-    public Long save(Member member);
-    public Member findById(Long id);
-    public List<Member> findAll();
-    public List<String> findByUserId(String userId);
-
+    Long save(Member member);
+    Member findById(Long id);
+    List<Member> findAll();
+    List<String> findByUserId(String userId);
+    List<Member> findMemberByUserId(String userId);
 }

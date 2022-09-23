@@ -12,6 +12,10 @@ header {
     margin: 0;
     font-size: 60px;
 }
+.header-title a {
+    text-decoration: none;
+    color: black;
+}
 .header-title sub {
     margin: 0;
     font-size: 35px;
@@ -26,6 +30,24 @@ header {
     margin-right: 15px;
     width: 45px;
     height: 45px;
+}
+.login-buttons {
+    margin-left: 900px;
+}
+.login-buttons button a {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+.login-buttons button {
+    background-color: white;
+    font-weight: 800;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100px;
+}
+.logout-button {
+    margin-left: 65px;
 }
 
 nav {

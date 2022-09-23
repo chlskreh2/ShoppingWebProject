@@ -7,10 +7,13 @@ header {
     display: inline-block;
     margin-right: 300px;
 }
-
 .header-title h1 {
     margin: 0;
     font-size: 60px;
+}
+.header-title a {
+    text-decoration: none;
+    color: black;
 }
 .header-title sub {
     margin: 0;
@@ -21,11 +24,29 @@ header {
     display: inline-block;
     margin: 10px 0 0 500px;
 }
-
 .my-image {
     margin-right: 15px;
     width: 45px;
     height: 45px;
+}
+
+.login-buttons {
+    margin-left: 900px;
+}
+.login-buttons button a {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+.login-buttons button {
+    background-color: white;
+    font-weight: 800;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100px;
+}
+.logout-button {
+    margin-left: 65px;
 }
 
 nav {
@@ -45,12 +66,10 @@ nav {
     left: 50%;
     transform: translateX(-50%);
 }
-
 .category-group li {
     display: inline-block;
     margin: 10px 50px 0 50px;
 }
-
 .category-group li a {
     text-decoration: none;
     color: white;

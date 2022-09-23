@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:fragment="itemsLayout (content)" lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html th:fragment="itemsLayout (header, content)" lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>왘쇼핑몰</title>
@@ -8,20 +8,13 @@
 <body>
 
 <div class="container">
-  <header>
-    <div class="header-title">
-      <h1>왘<sub>쇼핑몰</sub></h1>
-    </div>
-    <div class="my-data">
-      <img class="my-image" src="/images/bag-icon.png" />
-      <img class="my-image" src="/images/my-icon.png" />
-    </div>
-  </header>
+
+  <header th:replace="${header}"></header>
 
   <nav>
     <ul class="category-group">
       <li>
-        <a href="#">도서</a>
+        <a href="/items/sort/book">도서</a>
       </li>
     </ul>
   </nav>

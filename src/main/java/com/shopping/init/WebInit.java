@@ -1,8 +1,11 @@
 package com.shopping.init;
 
+import com.shopping.domain.Address;
 import com.shopping.domain.Book;
 import com.shopping.domain.FileImage;
+import com.shopping.domain.Member;
 import com.shopping.service.ItemService;
+import com.shopping.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +22,7 @@ import java.nio.file.Paths;
 public class WebInit {
 
     private final ItemService itemService;
+    private final MemberService memberService;
 
     @PostConstruct
     public void init() {
@@ -53,6 +57,16 @@ public class WebInit {
         book5.setPrice(50000);
         book5.setViewCount(0L);
         itemService.save(book5);
+
+        Member member1 = new Member();
+        member1.setUserId("test");
+        member1.setPassword("1234");
+        member1.setGender("남");
+        member1.setBirth(19990101);
+        member1.setPhone("01012341234");
+        Address address1 = new Address("1111", "2222");
+        member1.setAddress(address1);
+        memberService.join(member1);
 
 
     }

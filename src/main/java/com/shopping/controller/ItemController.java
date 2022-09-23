@@ -1,6 +1,7 @@
 package com.shopping.controller;
 
 import com.shopping.domain.Book;
+import com.shopping.domain.Member;
 import com.shopping.dto.item.SaveBookDto;
 import com.shopping.dto.item.SortViewBookDto;
 import com.shopping.service.ItemService;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.MalformedURLException;
 import java.util.List;
 
+import static com.shopping.controller.MemberSession.LOGIN_SESSION;
+
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
@@ -25,10 +28,16 @@ public class ItemController {
     private String filePath;
 
     @GetMapping("/items/sort/book")
-    public String home(Model model) {
+    public String home(@SessionAttribute(name = LOGIN_SESSION, required = false) Member loginMember, Model model) {
+        if (loginMember == null) {
+            List<SortViewBookDto> bookSortView = itemService.findBookSortView();
+            model.addAttribute("books", bookSortView);
+            return "item/itemsBook";
+        }
+
         List<SortViewBookDto> bookSortView = itemService.findBookSortView();
         model.addAttribute("books", bookSortView);
-        return "item/itemsBook";
+        return "item/loginItemsBook";
     }
 
     @GetMapping("/items/book")

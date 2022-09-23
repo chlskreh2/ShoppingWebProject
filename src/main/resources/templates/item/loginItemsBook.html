@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/itemsLayout :: itemsLayout(~{::header}, ~{::section})}" lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<header>
+  <div class="header-title">
+    <h1><a href="/">왘<sub>쇼핑몰</sub></a></h1>
+  </div>
+  <div class="my-data">
+    <img class="my-image" src="/images/bag-icon.png" />
+    <img class="my-image" src="/images/my-icon.png" />
+  </div>
+  <div class="login-buttons">
+    <button class="logout-button">
+      <a href="/members/logout">로그아웃</a>
+    </button>
+  </div>
+</header>
+
+<section>
+  <div class="item-view-format">
+      <span class="divide-item">
+        도서 > 인문
+      </span>
+    <span>
+        <a href="/items/book"><button>도서등록</button></a>
+      </span>
+    <span class="sort-item">
+              <select onchange="location.href=this.value">
+                  <option value="#?sort=view">조회순</option>
+                  <option value="#?sort=sell">판매순</option>
+                  <option value="#?sort=star">별점순</option>
+                  <option value="#?sort=new">최신순</option>
+              </select>
+          </span>
+  </div>
+
+  <div class="group-items popular-items">
+    <ul>
+      <th:block th:each="book, bookState : ${books}">
+        <li>
+          <div class="group-item popular-item">
+            <a href="#">
+              <img class="item-image popular-item-image" src="images/img1.jpg" />
+              <div>
+                  <span th:text="${book.itemName}">
+                    상품 이름
+                  </span>
+                <span th:text="${book.price}">
+                    가격
+                  </span>
+              </div>
+            </a>
+            <div>
+              <a href="#"><button class="btn-buy">구매하기</button></a>
+              <a href="#"><button class="btn-mybag">장바구니</button></a>
+            </div>
+          </div>
+        </li>
+        <div th:if="${bookState.count % 4 == 0}"></div>
+      </th:block>
+    </ul>
+  </div>
+
+  <div class="item-page">
+    <span>◁</span>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>▷</span>
+  </div>
+</section>
+</body>
+</html>
