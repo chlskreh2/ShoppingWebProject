@@ -1,6 +1,7 @@
 package com.shopping.controller;
 
 import com.shopping.domain.Book;
+import com.shopping.domain.Item;
 import com.shopping.domain.Member;
 import com.shopping.dto.item.SaveBookDto;
 import com.shopping.dto.item.SortViewBookDto;
@@ -27,19 +28,6 @@ public class ItemController {
     @Value("${file.path}")
     private String filePath;
 
-    @GetMapping("/items/sort/book")
-    public String home(@SessionAttribute(name = LOGIN_SESSION, required = false) Member loginMember, Model model) {
-        if (loginMember == null) {
-            List<SortViewBookDto> bookSortView = itemService.findBookSortView();
-            model.addAttribute("books", bookSortView);
-            return "item/itemsBook";
-        }
-
-        List<SortViewBookDto> bookSortView = itemService.findBookSortView();
-        model.addAttribute("books", bookSortView);
-        return "item/loginItemsBook";
-    }
-
     @GetMapping("/items/book")
     public String saveBookForm(@ModelAttribute(name = "form") SaveBookDto form) {
         return "item/saveForm";
@@ -50,6 +38,28 @@ public class ItemController {
         Book book = form.saveBook();
         itemService.save(book);
         return "item/saveForm";
+    }
+
+    @GetMapping("/items/sort/book")
+    public String sortBook(@SessionAttribute(name = LOGIN_SESSION, required = false) Member loginMember, Model model) {
+        List<SortViewBookDto> bookSortView = itemService.findBookSortView();
+        model.addAttribute("books", bookSortView);
+        if (loginMember == null) {
+            return "item/itemsBook";
+        }
+        return "item/loginItemsBook";
+    }
+
+    //미래에 도서 이외의 다른 상품 추가 할 수 있으니 model 에 변수명을 item 으로 추가
+    @GetMapping("/items/book/{bookId}")
+    public String detailBook(@SessionAttribute(name = LOGIN_SESSION, required = false) Member loginMember,
+                                @PathVariable Long bookId, Model model) {
+        Item item = itemService.showItem(bookId);
+        model.addAttribute("item", item);
+        if (loginMember == null) {
+            return "item/detailBook";
+        }
+        return "item/loginDetailBook";
     }
 
     @ResponseBody

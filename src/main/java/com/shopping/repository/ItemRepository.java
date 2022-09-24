@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface ItemRepository {
 
-    public Long save(Item item);
-    public Item findById(Long id);
-    public List<Item> findAll();
-    public List<SortViewBookDto> findBookSortView();
+     Long save(Item item);
+     Item findById(Long id);
+//     List<Item> findAll();
+     List<SortViewBookDto> findBookSortView();
 
 }

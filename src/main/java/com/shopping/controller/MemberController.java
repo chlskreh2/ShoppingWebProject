@@ -55,7 +55,11 @@ public class MemberController {
 
         HttpSession session = request.getSession();
         session.setAttribute(LOGIN_SESSION, member.get(0));
-        return "redirect:/";
+
+        String redirectURL = request.getParameter("redirectURL");
+        if (redirectURL == null)
+            redirectURL = "/";
+        return "redirect:" + redirectURL;
     }
 
     @GetMapping("/members/logout")
@@ -63,7 +67,11 @@ public class MemberController {
         HttpSession session = request.getSession(false);
         if (session != null)
             session.invalidate();
-        return "redirect:/";
+
+        String redirectURL = request.getParameter("redirectURL");
+        if (redirectURL == null)
+            redirectURL = "/";
+        return "redirect:" + redirectURL;
     }
 
     @GetMapping("/members/join")

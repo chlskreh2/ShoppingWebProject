@@ -25,16 +25,16 @@ public class ItemJpaRepository implements ItemRepository{
         return em.find(Item.class, id);
     }
 
-    @Override
-    public List<Item> findAll() {
-        return em.createQuery("select i from Item as i", Item.class)
-                .getResultList();
-    }
+//    @Override
+//    public List<Item> findAll() {
+//        return em.createQuery("select i from Item as i", Item.class)
+//                .getResultList();
+//    }
 
     @Override
     public List<SortViewBookDto> findBookSortView() {
         return em.createQuery("select new com.shopping.dto.item.SortViewBookDto" +
-                        "(i.itemName, i.price, i.viewCount, i.fileImage) " +
+                        "(i.id, i.itemName, i.price, i.viewCount, i.fileImage) " +
                         "from Item as i", SortViewBookDto.class)
                 .getResultList();
         //

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html th:fragment="itemsLayout (header, content)" lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html th:fragment="itemsLayout (cssLink ,header, content)" lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>왘쇼핑몰</title>
-  <link rel="stylesheet" href="/css/items.css">
+  <link rel="stylesheet" href="/css/itemsLayout.css">
+  <link th:replace="${cssLink}">
 </head>
 <body>
 

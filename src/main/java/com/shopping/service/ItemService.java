@@ -20,6 +20,10 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
+    public Item showItem(Long id) {
+        return itemRepository.findById(id);
+    }
+
     public List<SortViewBookDto> findBookSortView() {
         return itemRepository.findBookSortView();
     }

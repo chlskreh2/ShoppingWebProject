@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html th:replace="~{layout/itemsLayout :: itemsLayout(~{::header}, ~{::section})}" lang="ko" xmlns:th="http://www.thymeleaf.org">
-
+<html th:replace="~{layout/itemsLayout :: itemsLayout(~{::link}, ~{::header}, ~{::section})}" lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/items.css">
+</head>
 <body>
 <header>
   <div class="header-title">
@@ -12,7 +14,7 @@
   </div>
   <div class="login-buttons">
     <button class="logout-button">
-      <a href="/members/logout">로그아웃</a>
+      <a href="/members/logout?redirectURL=/items/sort/book">로그아웃</a>
     </button>
   </div>
 </header>
@@ -22,17 +24,17 @@
       <span class="divide-item">
         도서 > 인문
       </span>
-    <span>
-        <a href="/items/book"><button>도서등록</button></a>
+      <span>
+          <a href="/items/book"><button>도서등록</button></a>
+        </span>
+      <span class="sort-item">
+          <select onchange="location.href=this.value">
+              <option value="#?sort=view">조회순</option>
+              <option value="#?sort=sell">판매순</option>
+              <option value="#?sort=star">별점순</option>
+              <option value="#?sort=new">최신순</option>
+          </select>
       </span>
-    <span class="sort-item">
-              <select onchange="location.href=this.value">
-                  <option value="#?sort=view">조회순</option>
-                  <option value="#?sort=sell">판매순</option>
-                  <option value="#?sort=star">별점순</option>
-                  <option value="#?sort=new">최신순</option>
-              </select>
-          </span>
   </div>
 
   <div class="group-items popular-items">
@@ -40,7 +42,7 @@
       <th:block th:each="book, bookState : ${books}">
         <li>
           <div class="group-item popular-item">
-            <a href="#">
+            <a href="#" th:href="@{/items/book/{bookId}(bookId=${book.id})}">
               <img class="item-image popular-item-image" src="images/img1.jpg" />
               <div>
                   <span th:text="${book.itemName}">

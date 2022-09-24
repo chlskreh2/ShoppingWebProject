@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/itemsLayout :: itemsLayout(~{::link}, ~{::header}, ~{::section})}" lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/itemDetail.css">
+</head>
+<body>
+<header>
+    <div class="header-title">
+        <h1><a href="/">왘<sub>쇼핑몰</sub></a></h1>
+    </div>
+    <div class="my-data">
+        <img class="my-image" src="/images/bag-icon.png" />
+        <img class="my-image" src="/images/my-icon.png" />
+    </div>
+    <div class="login-buttons">
+        <button>
+            <a href="/members/login?redirectURL=/items/sort/book" th:href="@{/members/login(redirectURL='/items/book/'+${item.id})}">로그인</a>
+        </button>
+        <button>
+            <a href="/members/join?redirectURL=/items/sort/book" th:href="@{/members/login(redirectURL='/items/book/'+${item.id})}">회원가입</a>
+        </button>
+    </div>
+</header>
+
+<section>
+    <div class="item-view-format">
+        <span class="divide-item">
+            도서 > 인문
+        </span>
+    </div>
+
+    <div class="item-detail-main">
+        <div class="item-detail-image">
+            <img src="/images/img1.jpg" />
+        </div>
+        <div class="item-detail-box">
+            <div class="item-detail-comment">
+                <h2>아이템 제목</h2>
+                <div class="item-detail-common">
+                    <li>가격 : 10000</li>
+                    <li>재고 : 10</li>
+                    <li>배송비 : 3000</li>
+                </div>
+            </div>
+            <div class="item-detail-button">
+                <div>
+                    <button type="submit" class="item-detail-bag">장바구니</button>
+                </div>
+                <div>
+                    <button type="submit" class="item-detail-buy">구매하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-detail-information">
+        <div class="information"></div>
+    </div>
+    <div class="item-detail-user-comment">
+        <div class="user-comment"></div>
+    </div>
+</section>
+</body>
+</html>
