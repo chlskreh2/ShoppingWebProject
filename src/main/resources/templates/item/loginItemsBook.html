@@ -13,8 +13,8 @@
     <img class="my-image" src="/images/my-icon.png" />
   </div>
   <div class="login-buttons">
-    <button class="logout-button">
-      <a href="/members/logout?redirectURL=/items/sort/book">로그아웃</a>
+    <button type="submit" class="logout-button" onclick="location.href='/members/logout?redirectURL=/items/sort/book'">
+      로그아웃
     </button>
   </div>
 </header>
@@ -54,8 +54,14 @@
               </div>
             </a>
             <div>
-              <a href="#"><button class="btn-buy">구매하기</button></a>
-              <a href="#"><button class="btn-mybag">장바구니</button></a>
+                <button type="submit" class="btn-buy" onclick="location.href='#'"
+                        th:onclick="|location.href='@{/items/buy/book/{bookId}(bookId=${book.id})}'|">
+                    구매하기
+                </button>
+                <button type="submit" class="btn-my-bag" onclick="location.href='#'"
+                        th:onclick="|location.href='@{/items/mybag/book/{bookId}(bookId=${book.id})}'|">
+                    장바구니
+                </button>
             </div>
           </div>
         </li>

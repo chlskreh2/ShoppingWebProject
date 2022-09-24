@@ -13,11 +13,11 @@
       <img class="my-image" src="/images/my-icon.png" />
     </div>
     <div class="login-buttons">
-      <button>
-        <a href="/members/login?redirectURL=/items/sort/book" >로그인</a>
+      <button type="submit" onclick="location.href='/members/login?redirectURL=/items/sort/book'">
+        로그인
       </button>
-      <button>
-        <a href="/members/join?redirectURL=/items/sort/book">회원가입</a>
+      <button type="submit" onclick="location.href='/members/join?redirectURL=/items/sort/book'">
+        회원가입
       </button>
     </div>
   </header>
@@ -57,8 +57,14 @@
                 </div>
               </a>
               <div>
-                <a href="#"><button class="btn-buy">구매하기</button></a>
-                <a href="#"><button class="btn-mybag">장바구니</button></a>
+                <button type="submit" class="btn-buy" onclick="location.href='#'"
+                        th:onclick="|location.href='@{/items/buy/book/{bookId}(bookId=${book.id})}'|">
+                  구매하기
+                </button>
+                <button type="submit" class="btn-my-bag" onclick="location.href='#'"
+                        th:onclick="|location.href='@{/items/mybag/book/{bookId}(bookId=${book.id})}'|">
+                  장바구니
+                </button>
               </div>
             </div>
           </li>

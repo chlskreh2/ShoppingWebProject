@@ -33,17 +33,13 @@ header {
 .login-buttons {
     margin-left: 900px;
 }
-.login-buttons button a {
-    color: black;
-    cursor: pointer;
-    text-decoration: none;
-}
 .login-buttons button {
     background-color: white;
     font-weight: 800;
     font-size: 18px;
     border-radius: 10px;
     width: 100px;
+    cursor: pointer;
 }
 .logout-button {
     margin-left: 65px;
@@ -120,19 +116,18 @@ header {
 .btn-buy {
     height: 30px;
     background-color: rgb(108, 108, 244);
-    color: white;
     border-radius: 10px;
-    cursor: pointer;
-    font-weight: 550;
     margin: 0 25px;
+    color: white;
+    font-weight: 550;
+    cursor: pointer;
 }
-
-.btn-mybag {
+.btn-my-bag {
     height: 30px;
     background-color: rgb(241, 143, 143);
-    color: white;
     border-radius: 10px;
-    cursor: pointer;
+    margin: 0 25px;
+    color: white;
     font-weight: 550;
-    margin: 0 20px;
+    cursor: pointer;
 }

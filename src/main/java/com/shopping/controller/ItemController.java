@@ -62,6 +62,18 @@ public class ItemController {
         return "item/loginDetailBook";
     }
 
+    @GetMapping("/items/buy/book/{bookId}")
+    public String buyBook() {
+
+        return "item/buyBook";
+    }
+
+    @GetMapping("/items/mybag/book/{bookId}")
+    public String putMyBag() {
+
+        return "item/putMyBag";
+    }
+
     @ResponseBody
     @GetMapping("/items/{filename}")
     public Resource showImage(@PathVariable String filename) throws MalformedURLException {

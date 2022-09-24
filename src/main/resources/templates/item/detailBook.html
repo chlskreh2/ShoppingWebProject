@@ -13,11 +13,13 @@
         <img class="my-image" src="/images/my-icon.png" />
     </div>
     <div class="login-buttons">
-        <button>
-            <a href="/members/login?redirectURL=/items/sort/book" th:href="@{/members/login(redirectURL='/items/book/'+${item.id})}">로그인</a>
+        <button type="submit" onclick="location.href='#'"
+                th:onclick="|location.href='@{/members/login(redirectURL='/items/book/'+${item.id})}'|">
+            로그인
         </button>
-        <button>
-            <a href="/members/join?redirectURL=/items/sort/book" th:href="@{/members/login(redirectURL='/items/book/'+${item.id})}">회원가입</a>
+        <button type="submit" onclick="location.href='#'"
+                th:onclick="|location.href='@{/members/login(redirectURL='/items/book/'+${item.id})}'|">
+            회원가입
         </button>
     </div>
 </header>
@@ -44,10 +46,16 @@
             </div>
             <div class="item-detail-button">
                 <div>
-                    <button type="submit" class="item-detail-bag">장바구니</button>
+                    <button type="submit" class="item-detail-bag" onclick="location.href='#'"
+                            th:onclick="|location.href='@{/items/mybag/book/{bookId}(bookId=${item.id})}'|">
+                        장바구니
+                    </button>
                 </div>
                 <div>
-                    <button type="submit" class="item-detail-buy">구매하기</button>
+                    <button type="submit" class="item-detail-buy" onclick="location.href='#'"
+                            th:onclick="|location.href='@{/items/buy/book/{bookId}(bookId=${item.id})}'|">
+                        구매하기
+                    </button>
                 </div>
             </div>
         </div>
