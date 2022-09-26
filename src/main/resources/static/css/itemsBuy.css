@@ -1,0 +1,105 @@
+.container {
+    text-align: center;
+}
+
+hr {
+    background-color: #f7a988;
+    height: 50px;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 800;
+}
+.sub-title-font {
+    font-size: 20px;
+    font-weight: 800;
+}
+.delivery-data input{
+    display: block;
+    margin: 10px auto 10px auto;
+    width: 300px;
+    height: 40px;
+    border: solid 1px #dadada;
+}
+.buy-list-data {
+    margin-top: 30px;
+}
+.buy-list-data table {
+    margin: 10px auto 10px auto;
+    width: 900px;
+    border-collapse: collapse;
+}
+thead tr {
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px;
+}
+tbody tr {
+    height: 160px;
+}
+td {
+    border: solid 1px #dadada;
+}
+.pay-data {
+    margin-top: 30px;
+}
+#btn-pay {
+    display: block;
+    margin: 10px auto 10px auto;
+    border: solid 1px #dadada;
+    border-radius: 10px;
+    background-color: #ffeb00;
+    width: 300px;
+}
+
+
+header {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.header-title {
+    display: inline-block;
+    margin-right: 300px;
+}
+
+.header-title h1 {
+    margin: 0;
+    font-size: 60px;
+}
+.header-title a {
+    text-decoration: none;
+    color: black;
+}
+.header-title sub {
+    margin: 0;
+    font-size: 35px;
+}
+
+.my-data {
+    display: inline-block;
+    margin: 10px 0 0 500px;
+}
+
+.my-image {
+    margin-right: 15px;
+    width: 45px;
+    height: 45px;
+}
+footer {
+    display: inline-block;
+    text-align: center;
+    background-color: #f7a988;
+    width: 100%;
+    height: 77px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    margin-top: 9px;
+}
+footer div {
+    text-align: center;
+    margin: 7px 0;
+}

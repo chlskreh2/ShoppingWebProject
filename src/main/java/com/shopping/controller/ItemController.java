@@ -63,8 +63,10 @@ public class ItemController {
     }
 
     @GetMapping("/items/buy/book/{bookId}")
-    public String buyBook() {
-
+    public String buyBook(@PathVariable Long bookId, @RequestParam("orderCount") Integer orderCount, Model model) {
+        System.out.println(orderCount);
+        Item item = itemService.showItem(bookId);
+        model.addAttribute("item", item);
         return "item/buyBook";
     }
 

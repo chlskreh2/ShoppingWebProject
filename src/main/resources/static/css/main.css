@@ -97,7 +97,6 @@ nav {
     color: rgb(94, 88, 88);
     margin-top: 24px;
     text-align: center;
-    margin-right: 960px;
 }
 
 .group-items {
@@ -138,6 +137,12 @@ nav {
 .popular-item-title {
     margin-top: 15px;
     margin-right: 915px;
+}
+.discount-item-title {
+    margin-right: 890px;
+}
+.recent-item-title {
+    margin-right: 960px;
 }
 
 .btn-buy {

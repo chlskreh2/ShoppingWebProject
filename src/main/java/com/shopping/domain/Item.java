@@ -22,6 +22,7 @@ public abstract class Item {
     private Integer price;
     private Integer stock;
     private Integer deliveryPrice;
+    private Integer discountPercent;
     @Lob
     private String information;
     private Long viewCount;

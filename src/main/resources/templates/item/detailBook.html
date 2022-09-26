@@ -35,30 +35,30 @@
         <div class="item-detail-image">
             <img src="/images/img1.jpg" />
         </div>
-        <div class="item-detail-box">
+        <form class="item-detail-box" th:action="@{/items/buy/book/{bookId}(bookId=${item.id})}" method="get">
             <div class="item-detail-comment">
                 <h2>아이템 제목</h2>
                 <div class="item-detail-common">
-                    <li>가격 : 10000</li>
-                    <li>재고 : 10</li>
-                    <li>배송비 : 3000</li>
+                    <li th:text="|가격 : ${item.price}|">가격 : 0</li>
+                    <li th:text="|재고 : ${item.stock}|">재고 : 0</li>
+                    <li th:text="|배송비 : ${item.deliveryPrice}|">배송비 : 0</li>
+                    <input type="number" name="orderCount" value="1" th:min="1" th:max="${item.stock}" />
                 </div>
             </div>
             <div class="item-detail-button">
                 <div>
-                    <button type="submit" class="item-detail-bag" onclick="location.href='#'"
+                    <button type="button" class="item-detail-bag" onclick="location.href='#'"
                             th:onclick="|location.href='@{/items/mybag/book/{bookId}(bookId=${item.id})}'|">
                         장바구니
                     </button>
                 </div>
                 <div>
-                    <button type="submit" class="item-detail-buy" onclick="location.href='#'"
-                            th:onclick="|location.href='@{/items/buy/book/{bookId}(bookId=${item.id})}'|">
+                    <button type="submit" class="item-detail-buy">
                         구매하기
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
     <div class="item-detail-information">
         <div class="information"></div>
