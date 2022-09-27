@@ -4,9 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.shopping.domain.Address;
+import com.shopping.domain.Item;
 import com.shopping.domain.Member;
 import com.shopping.dto.api.ApprovePaymentDto;
 import com.shopping.dto.api.ReadyPaymentDto;
+import com.shopping.service.ItemService;
 import com.shopping.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,23 +30,26 @@ import java.net.URL;
 public class KakaoPayController {
 
     private final OrderService orderService;
+    private final ItemService itemService;
 
     @PostMapping("/items/pay/ready")
     public String readyPay(@RequestParam("itemId") Long id, @RequestParam("orderCount") Integer orderCount,
                            @ModelAttribute Address address, HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         Member member = (Member)session.getAttribute(MemberSession.LOGIN_SESSION);
-        orderService.save(member.getId(), id, orderCount, address);
-
+        Long orderId = orderService.save(member, id, orderCount, address);
+        Item item = itemService.showItem(id);
+        int discount = item.getPrice() * orderCount * item.getDiscountPercent() / 100;
+        int orderPrice = item.getPrice() * orderCount - discount + item.getDeliveryPrice();
 
         URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
         HttpURLConnection httpURLConnection = setHttpURLConnectionProperty(url);
         String putApiValue = "cid=TC0ONETIME" +
                                 "&partner_order_id=partner_order_id" +
                                 "&partner_user_id=partner_user_id" +
-                                "&item_name=초코파이" +
-                                "&quantity=1" +
-                                "&total_amount=1" +
+                                "&item_name=" + id +
+                                "&quantity=" + orderCount +
+                                "&total_amount=" + orderPrice +
                                 "&vat_amount=0" +
                                 "&tax_free_amount=0" +
                                 "&approval_url=http://localhost:8080/items/pay/approve" +

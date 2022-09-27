@@ -20,5 +20,13 @@ public class Delivery {
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
 
+    public Delivery() {
+
+    }
+
+    public Delivery(Address address, DeliveryStatus status) {
+        this.address = address;
+        this.status = status;
+    }
 
 }

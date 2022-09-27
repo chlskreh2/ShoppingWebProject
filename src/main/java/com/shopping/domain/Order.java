@@ -17,7 +17,17 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
+
+    public Order() {
+
+    }
+
+    public Order(Member member, Delivery delivery) {
+        this.member = member;
+        this.delivery = delivery;
+    }
+
 }
