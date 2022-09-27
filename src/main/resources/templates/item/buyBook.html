@@ -20,7 +20,7 @@
 
     <hr />
 
-    <div class="pay-form">
+    <form th:action="@{/items/pay/ready(itemId=${item.id}, orderCount=${orderCount})}" method="post" class="pay-form">
         <div class="delivery-data">
             <label for="city">배달정보</label>
             <input type="text" id="city" name="city"/>
@@ -42,14 +42,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="items : ${item}">
+                <tr>
                     <td>상품 이미지</td>
                     <td th:text="${item.itemName}">상품 이름</td>
                     <td th:text="${item.price}">상품 가격</td>
-                    <td th:text="${item.itemName}">구입한 개수</td>
-                    <td th:text="${item.itemName}">배송비</td>
-                    <td th:text="${item.itemName}">할인 가격</td>
-                    <td th:text="${item.itemName}">총 가격</td>
+                    <td th:text="${orderCount}">구입한 개수</td>
+                    <td th:text="${item.deliveryPrice}">배송비</td>
+                    <td th:text="${discountPrice}">할인 가격</td>
+                    <td th:text="${totalPrice}">총 가격</td>
                 </tr>
                 </tbody>
             </table>
@@ -57,11 +57,11 @@
 
         <div class="pay-data">
             <span class="sub-title-font">결제</span>
-            <button type="submit" id="btn-pay" onclick="location.href='/items/pay/ready'">
+            <button type="submit" id="btn-pay">
                 <img src="/images/payment-icon.png" />
             </button>
         </div>
-    </div>
+    </form>
 
     <footer>
         <div>(주)왁쇼핑몰</div>

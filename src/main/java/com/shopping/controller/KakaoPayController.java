@@ -3,13 +3,15 @@ package com.shopping.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.shopping.domain.Address;
 import com.shopping.dto.api.ApprovePaymentDto;
 import com.shopping.dto.api.ReadyPaymentDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
@@ -22,8 +24,10 @@ import java.net.URL;
 @Controller
 public class KakaoPayController {
 
-    @RequestMapping("/items/pay/ready")
-    public String readyPay(HttpServletResponse response) throws IOException {
+    @PostMapping("/items/pay/ready")
+    public String readyPay(@RequestParam("itemId") Long id, @RequestParam("orderCount") Integer orderCount,
+                           @ModelAttribute Address address, HttpServletResponse response) throws IOException {
+        log.info("id={}, address={}, orderCount={}", id, address.getCity(), orderCount);
         URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
         HttpURLConnection httpURLConnection = setHttpURLConnectionProperty(url);
         String putApiValue = "cid=TC0ONETIME" +
@@ -52,7 +56,7 @@ public class KakaoPayController {
         return "redirect:" + readyPaymentDto.getNext_redirect_pc_url();
     }
 
-    @RequestMapping("/items/pay/approve")
+    @PostMapping("/items/pay/approve")
     public String approvePay(@CookieValue(value = "userTid") String userTid ,@RequestParam String pg_token, Model model) throws IOException {
         URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
         HttpURLConnection httpURLConnection = setHttpURLConnectionProperty(url);

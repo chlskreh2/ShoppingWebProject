@@ -52,7 +52,7 @@
                         장바구니
                     </button>
                 </div>
-                <div>
+                <div th:if="${item.stock} > 0">
                     <button type="submit" class="item-detail-buy">
                         구매하기
                     </button>

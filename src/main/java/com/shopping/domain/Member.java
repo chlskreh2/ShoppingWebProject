@@ -22,6 +22,8 @@ public class Member {
     private String gender;
     @Embedded
     private Address address;
+    @Embedded
+    private Address recentAddress;
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
     @OneToOne(fetch = FetchType.LAZY)

@@ -64,9 +64,17 @@ public class ItemController {
 
     @GetMapping("/items/buy/book/{bookId}")
     public String buyBook(@PathVariable Long bookId, @RequestParam("orderCount") Integer orderCount, Model model) {
-        System.out.println(orderCount);
         Item item = itemService.showItem(bookId);
         model.addAttribute("item", item);
+        if (item.getStock() <= 0) {
+            return "item/loginDetailBook";
+        }
+        int itemsPrice = item.getPrice() * orderCount;
+        int discountPrice = itemsPrice * item.getDiscountPercent() / 100;
+        int totalPrice = itemsPrice - discountPrice + item.getDeliveryPrice();
+        model.addAttribute("orderCount", orderCount);
+        model.addAttribute("discountPrice", discountPrice);
+        model.addAttribute("totalPrice", totalPrice);
         return "item/buyBook";
     }
 

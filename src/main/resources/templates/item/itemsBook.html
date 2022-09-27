@@ -58,10 +58,10 @@
               </a>
               <div>
                 <button type="submit" class="btn-buy" onclick="location.href='#'"
-                        th:onclick="|location.href='@{/items/buy/book/{bookId}(bookId=${book.id})}'|">
+                        th:onclick="|location.href='@{/items/book/{bookId}(bookId=${book.id})}'|">
                   구매하기
                 </button>
-                <button type="submit" class="btn-my-bag" onclick="location.href='#'"
+                <button type="button" class="btn-my-bag" onclick="location.href='#'"
                         th:onclick="|location.href='@{/items/mybag/book/{bookId}(bookId=${book.id})}'|">
                   장바구니
                 </button>
