@@ -11,11 +11,11 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class ItemService {
 
     private final ItemRepository itemRepository;
-
+    @Transactional
     public Long save(Item item) {
         return itemRepository.save(item);
     }

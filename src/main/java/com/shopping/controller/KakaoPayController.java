@@ -4,30 +4,39 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.shopping.domain.Address;
+import com.shopping.domain.Member;
 import com.shopping.dto.api.ApprovePaymentDto;
 import com.shopping.dto.api.ReadyPaymentDto;
+import com.shopping.service.OrderService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class KakaoPayController {
+
+    private final OrderService orderService;
 
     @PostMapping("/items/pay/ready")
     public String readyPay(@RequestParam("itemId") Long id, @RequestParam("orderCount") Integer orderCount,
-                           @ModelAttribute Address address, HttpServletResponse response) throws IOException {
-        log.info("id={}, address={}, orderCount={}", id, address.getCity(), orderCount);
+                           @ModelAttribute Address address, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        Member member = (Member)session.getAttribute(MemberSession.LOGIN_SESSION);
+        orderService.save(member.getId(), id, orderCount, address);
+
+
         URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
         HttpURLConnection httpURLConnection = setHttpURLConnectionProperty(url);
         String putApiValue = "cid=TC0ONETIME" +
@@ -56,7 +65,8 @@ public class KakaoPayController {
         return "redirect:" + readyPaymentDto.getNext_redirect_pc_url();
     }
 
-    @PostMapping("/items/pay/approve")
+    @RequestMapping("/items/pay/approve")
+    @ResponseBody
     public String approvePay(@CookieValue(value = "userTid") String userTid ,@RequestParam String pg_token, Model model) throws IOException {
         URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
         HttpURLConnection httpURLConnection = setHttpURLConnectionProperty(url);
@@ -81,7 +91,7 @@ public class KakaoPayController {
     private HttpURLConnection setHttpURLConnectionProperty(URL url) throws IOException {
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
         httpURLConnection.setRequestMethod("POST");
-        httpURLConnection.setRequestProperty("Authorization", "KakaoAK ");
+        httpURLConnection.setRequestProperty("Authorization", "KakaoAK 245d027cd0ac01ad2e6dce9ec2a580e2");
         httpURLConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
         httpURLConnection.setDoOutput(true);
         return httpURLConnection;
