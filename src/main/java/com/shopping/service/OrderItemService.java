@@ -18,4 +18,9 @@ public class OrderItemService {
         return orderItemRepository.save(orderItem);
     }
 
+    @Transactional
+    public void cancel(Long id) {
+        orderItemRepository.delete(id);
+    }
+
 }

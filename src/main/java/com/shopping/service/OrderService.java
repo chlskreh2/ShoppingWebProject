@@ -36,4 +36,9 @@ public class OrderService {
 
         return order.getId();
     }
+
+    @Transactional
+    public void cancel(Long orderId) {
+        orderRepository.delete(orderId);
+    }
 }

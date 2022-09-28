@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            text-align: center;
+
+        }
+        .pay-text {
+            font-weight: 800;
+            font-size: 20px;
+            margin-top: 50px;
+        }
+        button {
+            margin-top: 50px;
+            width: 307px;
+            font-weight: 800;
+            font-size: 20px;
+            background-color: #f7a988;
+        }
+        button a {
+            text-decoration-line: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pay-text" th:text="|${approve.getAmount().getTotal()}원 결제 완료됐습니다.|"></div>
+        <button type="button">
+            <a href="/">홈으로 돌아가기</a>
+        </button>
+    </div>
+</body>
+</html>

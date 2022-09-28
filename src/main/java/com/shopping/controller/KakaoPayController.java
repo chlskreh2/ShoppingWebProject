@@ -53,8 +53,8 @@ public class KakaoPayController {
                                 "&vat_amount=0" +
                                 "&tax_free_amount=0" +
                                 "&approval_url=http://localhost:8080/items/pay/approve" +
-                                "&fail_url=http://localhost:8080/" +
-                                "&cancel_url=http://localhost:8080/";
+                                "&fail_url=http://localhost:8080/items/pay/fail/" + orderId +
+                                "&cancel_url=http://localhost:8080/items/pay/cancel/" + orderId;
         sendOutputStream(httpURLConnection, putApiValue);
 
         String receiveApi = receiveInputStream(httpURLConnection);
@@ -71,7 +71,6 @@ public class KakaoPayController {
     }
 
     @RequestMapping("/items/pay/approve")
-    @ResponseBody
     public String approvePay(@CookieValue(value = "userTid") String userTid ,@RequestParam String pg_token, Model model) throws IOException {
         URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
         HttpURLConnection httpURLConnection = setHttpURLConnectionProperty(url);
@@ -90,7 +89,7 @@ public class KakaoPayController {
         ApprovePaymentDto approvePaymentDto = objectMapper.readValue(receiveApi, ApprovePaymentDto.class);
         model.addAttribute("approve", approvePaymentDto);
 
-        return receiveApi;
+        return "item/paySuccess";
     }
 
     private HttpURLConnection setHttpURLConnectionProperty(URL url) throws IOException {

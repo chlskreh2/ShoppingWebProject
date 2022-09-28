@@ -18,4 +18,15 @@ public class OrderJpaRepository implements OrderRepository{
         return order.getId();
     }
 
+    @Override
+    public Order findById(Long orderId) {
+        return em.find(Order.class, orderId);
+    }
+
+    @Override
+    public void delete(Long orderId) {
+        Order order = findById(orderId);
+        em.remove(order);
+    }
+
 }
