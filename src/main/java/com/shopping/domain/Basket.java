@@ -7,13 +7,23 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
 public class Basket {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "basket_id")
     private Long id;
-    @OneToOne(mappedBy = "basket", fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
     private Member member;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id")
+    private Item item;
 
+    public Basket() {
+    }
+
+    public Basket(Member member, Item item) {
+        this.member = member;
+        this.item = item;
+    }
 }

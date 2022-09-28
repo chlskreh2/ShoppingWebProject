@@ -78,16 +78,10 @@ public class ItemController {
         return "item/buyBook";
     }
 
-    @GetMapping("/items/mybag/book/{bookId}")
-    public String putMyBag() {
-
-        return "item/putMyBag";
-    }
-
     @ResponseBody
     @GetMapping("/items/{filename}")
     public Resource showImage(@PathVariable String filename) throws MalformedURLException {
-        return new UrlResource("file:" + filePath+filename);
+        return new UrlResource("file:" + filePath + filename);
     }
 
 

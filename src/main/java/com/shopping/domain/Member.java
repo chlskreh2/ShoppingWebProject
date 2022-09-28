@@ -24,9 +24,6 @@ public class Member {
     private Address address;
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "basket_id")
-    private Basket basket;
 
     public Member(){};
 
