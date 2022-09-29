@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,4 +31,5 @@ public abstract class Item {
     private FileImage fileImage;
     @OneToMany(mappedBy = "item")
     private List<ItemComment> itemComments = new ArrayList<>();
+    private LocalDateTime enrollDate;
 }

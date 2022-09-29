@@ -20,7 +20,7 @@
 
     <hr />
 
-    <form th:action="@{/items/pay/ready(itemId=${baskets})}" method="post" class="pay-form">
+    <div>
         <div class="buy-list-data">
             <span class="sub-title-font">장바구니 목록</span>
             <table>
@@ -33,22 +33,26 @@
                     <td>배송비</td>
                     <td>할인 비율</td>
                     <td>구입할 개수</td>
+                    <td>구매하기</td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="basket : ${baskets}">
-                    <td>상품 이미지</td>
-                    <td th:text="${basket.getItem().itemName}">상품 이름</td>
-                    <td th:text="${basket.getItem().price}">상품 가격</td>
-                    <td th:text="${basket.getItem().stock}">상품 재고</td>
-                    <td th:text="${basket.getItem().deliveryPrice}">배송비</td>
-                    <td th:text="|${basket.getItem().discountPercent}%|">할인</td>
-                    <td><input type="number" name="orderCount" value="1" th:min="1" th:max="${basket.getItem().stock}" /></td>
+                    <form th:action="@{/items/buy/book/{bookId}(bookId=${basket.getItem().id})}" method="get" class="pay-form">
+                        <td>상품 이미지</td>
+                        <td th:text="${basket.getItem().itemName}">상품 이름</td>
+                        <td th:text="${basket.getItem().price}">상품 가격</td>
+                        <td th:text="${basket.getItem().stock}">상품 재고</td>
+                        <td th:text="${basket.getItem().deliveryPrice}">배송비</td>
+                        <td th:text="|${basket.getItem().discountPercent}%|">할인</td>
+                        <td><input type="number" name="orderCount" value="1" th:min="1" th:max="${basket.getItem().stock}" /></td>
+                        <td><button type="submit">구매하기</button></td>
+                    </form>
                 </tr>
                 </tbody>
             </table>
         </div>
-    </form>
+    </div>
 
     <footer>
         <div>(주)왁쇼핑몰</div>
