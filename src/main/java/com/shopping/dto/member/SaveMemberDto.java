@@ -26,13 +26,10 @@ public class SaveMemberDto {
     private Address address;
 
     public Member saveMember() {
-        Member member = new Member();
-        member.setUserId(userId);
-        member.setPassword(password);
-        member.setPhone(phone);
-        member.setBirth(birth);
-        member.setGender(gender);
-        member.setAddress(address);
+        Member member = Member.builder()
+                .userId(userId).password(password)
+                .phone(phone).birth(birth)
+                .gender(gender).address(address).build();
         return member;
     }
 

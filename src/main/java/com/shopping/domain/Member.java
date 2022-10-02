@@ -1,7 +1,8 @@
 package com.shopping.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
+@Builder
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)

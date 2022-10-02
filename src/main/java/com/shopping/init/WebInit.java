@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
@@ -35,16 +36,8 @@ public class WebInit {
         book1.setViewCount(0L);
         FileImage fileImage = new FileImage("spring-image.jpg");
         book1.setFileImage(fileImage);
+        book1.setEnrollDate(LocalDateTime.now());
         itemService.save(book1);
-
-        Book book2 = new Book();
-        book2.setItemName("book2");
-        book2.setPrice(20000);
-        book2.setStock(20);
-        book2.setDeliveryPrice(2000);
-        book2.setDiscountPercent(10);
-        book2.setViewCount(0L);
-        itemService.save(book2);
 
         Book book3 = new Book();
         book3.setItemName("book3");
@@ -53,6 +46,7 @@ public class WebInit {
         book3.setDeliveryPrice(0);
         book3.setDiscountPercent(20);
         book3.setViewCount(0L);
+        book3.setEnrollDate(LocalDateTime.now());
         itemService.save(book3);
 
         Book book4 = new Book();
@@ -62,6 +56,7 @@ public class WebInit {
         book4.setDeliveryPrice(3000);
         book4.setDiscountPercent(10);
         book4.setViewCount(0L);
+        book4.setEnrollDate(LocalDateTime.now());
         itemService.save(book4);
 
         Book book5 = new Book();
@@ -73,17 +68,22 @@ public class WebInit {
         book5.setViewCount(0L);
         itemService.save(book5);
 
-        Member member1 = new Member();
-        member1.setUserId("test");
-        member1.setPassword("1234");
-        member1.setGender("남");
-        member1.setBirth(19990101);
-        member1.setPhone("01012341234");
-        Address address1 = new Address("1111", "2222");
-        member1.setAddress(address1);
+        Book book2 = new Book();
+        book2.setItemName("book2");
+        book2.setPrice(20000);
+        book2.setStock(20);
+        book2.setDeliveryPrice(2000);
+        book2.setDiscountPercent(10);
+        book2.setViewCount(0L);
+        book2.setEnrollDate(LocalDateTime.now());
+        itemService.save(book2);
+
+        Member member1 = Member.builder()
+                .userId("test").password("1234")
+                .gender("남").birth(19990101)
+                .phone("01012341234").address(new Address("1111", "2222"))
+                .build();
         memberService.join(member1);
-
-
     }
 
 }

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -32,6 +33,7 @@ public class SaveBookDto {
         book.setWriter(writer);
         book.setPublisher(publisher);
         book.setDatePublish(datePublish);
+        book.setEnrollDate(LocalDateTime.now());
         return book;
     }
 
